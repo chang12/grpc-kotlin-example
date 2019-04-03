@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "kr.fakenerd.grpc.kotlin.example";
+option java_outer_classname = "ExampleProto";
+
+package example;
+
+service TimerService {
+    rpc SendPeriodically (TimerRequest) returns (stream TimerResponse) {}
+}
+
+message TimerRequest {
+    int64 durationSeconds = 1;
+}
+
+message TimerResponse {
+    int64 epochMillis = 1;
+}
